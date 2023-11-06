@@ -1,9 +1,34 @@
 import { useState } from 'react';
+import { Header } from './components/Header';
+import { NewBudget } from './components/NewBudget';
 
 function App() {
-  const [count, setCount] = useState(0);
+  
+  const [budget, setBudget] = useState<number>(0);
+  const [isValid, setIsValid] = useState<boolean>(false);
 
-  return <h1>Gastos</h1>;
+  return (
+    <div>
+      <Header>
+
+        {
+          isValid ? 
+          (
+            
+            <p>Gastos componente</p>
+          ) : 
+          (
+            <NewBudget 
+              budget={ budget } 
+              setBudget={ setBudget } 
+              setIsValid={ setIsValid }
+            />
+          )
+        }
+
+      </Header>
+    </div>
+  );
 }
 
 export default App;
