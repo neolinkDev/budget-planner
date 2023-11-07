@@ -197,3 +197,60 @@ form input[type='submit'] {
   border-right: 5px solid #b91c1c;
   color: #b91c1c;
 }
+
+.container {
+  width: 90%;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+.container-budget {
+  margin-top: -5rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transform: translateY(5rem);
+}
+.two-columns {
+  flex-direction: column;
+}
+.two-columns :first-child {
+  margin-bottom: 4rem;
+}
+@media (min-width: 768px) {
+  .two-columns {
+      flex-direction: row;
+      align-items: center;
+      gap: 4rem;
+  }
+  .two-columns > div {
+      width: 50%;
+  }
+  .two-columns :first-child {
+      margin-bottom: 0;
+  }
+}
+
+.content-budget {
+  width: 100%;
+}
+.content-budget p {
+  font-weight: 400;
+  color: var(--gris-oscuro);
+  font-size: 2.4rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .content-budget p {
+      text-align: left;
+  }
+}
+.content-budget p.negativo,
+.content-budget p.negativo span {
+  color: #DC2626;
+}
+.content-budget span {
+  font-weight: 900;
+  color: var(--azul);
+}
