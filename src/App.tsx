@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Header } from './components/Header';
 import { NewBudget } from './components/NewBudget';
+import { BudgetControl } from './components/BudgetControl';
+import { AddCircle } from './components/Icons';
 
 function App() {
   
@@ -14,8 +16,14 @@ function App() {
         {
           isValid ? 
           (
+            <>
+              <BudgetControl budget={ budget } />
+              
+              <div className='add-circle shake-horizontal'>
+                <AddCircle />
+              </div>
+            </>
             
-            <p>Gastos componente</p>
           ) : 
           (
             <NewBudget 
@@ -27,6 +35,14 @@ function App() {
         }
 
       </Header>
+
+      {/* {
+        isValid && 
+          <div className='add-circle'>
+            <AddCircle />
+          </div>
+      } */}
+      
     </div>
   );
 }

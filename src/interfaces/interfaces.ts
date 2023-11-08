@@ -14,3 +14,7 @@ export interface MessageProps {
   children: string
   MessageType: string
 }
+
+export interface BudgetControlProps {
+  budget: number
+}
