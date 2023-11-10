@@ -18,3 +18,9 @@ export interface MessageProps {
 export interface BudgetControlProps {
   budget: number
 }
+
+export interface ModalProps {
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  animateModal: boolean
+  setAnimateModal: React.Dispatch<React.SetStateAction<boolean>>
+}
