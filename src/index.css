@@ -339,6 +339,8 @@ form input[type='submit'] {
   position: absolute;
   right: 3rem;
   top: 3rem;
+
+  z-index: 1000;
   /* width: 3rem;
   height: 3rem; */
 }
@@ -348,7 +350,7 @@ form input[type='submit'] {
 
 .modal .form {
   max-width: 80rem;
-  width: 40rem;
+  /* width: 40rem; */
   /* transition-property: all;
   transition-duration: 300ms;
   transition-timing-function: ease-in;
