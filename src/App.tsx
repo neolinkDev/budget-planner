@@ -4,6 +4,7 @@ import { NewBudget } from './components/NewBudget';
 import { BudgetControl } from './components/BudgetControl';
 import { AddCircle } from './components/Icons';
 import { Modal } from './components/Modal';
+import { ModalFormState } from './interfaces/interfaces';
 
 function App() {
   
@@ -16,6 +17,11 @@ function App() {
   const handleNewBudget = (): void => {
     setModal(true);
     setAnimateModal(true);
+  }
+
+  // 
+  const saveExpense = (expense: ModalFormState) => {
+    console.log(expense);
   }
 
   return (
@@ -60,6 +66,7 @@ function App() {
                     setModal={ setModal } 
                     animateModal={ animateModal } 
                     setAnimateModal={ setAnimateModal}
+                    saveExpense={ saveExpense }
                   />
       }
       

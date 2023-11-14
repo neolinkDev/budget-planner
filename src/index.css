@@ -356,6 +356,11 @@ form input[type='submit'] {
   transition-timing-function: ease-in;
   opacity: 0; */
 }
+@media (min-width: 480px){
+  .modal .form {
+    width: 40rem;
+  }
+}
 .modal label {
   color: var(--white);
 }

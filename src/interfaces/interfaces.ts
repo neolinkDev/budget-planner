@@ -22,5 +22,12 @@ export interface BudgetControlProps {
 export interface ModalProps {
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   animateModal: boolean
-  setAnimateModal: React.Dispatch<React.SetStateAction<boolean>>
+  setAnimateModal: React.Dispatch<React.SetStateAction<boolean>>,
+  saveExpense: (expense: ModalFormState) => void;
+}
+
+export interface ModalFormState {
+  name: string
+  amount: number
+  category: string
 }
