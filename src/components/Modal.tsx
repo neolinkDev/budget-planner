@@ -1,6 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import {
-  AMOUNT_FIELD_NAME,
   ENTERTAINMENT_CATEGORY,
   FOOD_CATEGORY,
   HEALTH_CATEGORY,
@@ -10,6 +9,7 @@ import {
 import { ModalFormState, ModalProps } from '../interfaces/interfaces';
 import { Close } from './Icons';
 import { Message } from './Message';
+import { parseInputValue } from '../helpers/inputsUtils';
 
 
 // component
@@ -42,7 +42,7 @@ export const Modal = ({
   //
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
 
-    const value = e.target.name === AMOUNT_FIELD_NAME ? parseFloat(e.target.value) : e.target.value;
+    const value = parseInputValue(e.target.name, e.target.value);
 
     setForm({
       ...form,
