@@ -27,6 +27,7 @@ export interface ModalProps {
 }
 
 export interface ModalFormState {
+  id?: string;
   name: string
   amount: number
   category: string

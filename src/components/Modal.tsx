@@ -70,6 +70,11 @@ export const Modal = ({
       return;
     }
 
+    if(amount <= 0){
+      setMsg('Numero inválido')
+      return;
+    }
+
     saveExpense({ name, amount, category })
     
   }

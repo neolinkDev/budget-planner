@@ -12,6 +12,7 @@ function App() {
   const [isValid, setIsValid] = useState<boolean>(false);
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
+  const [expenseState, setExpenseState] = useState<ModalFormState[]>([])
 
   //
   const handleNewBudget = (): void => {
@@ -21,7 +22,19 @@ function App() {
 
   // 
   const saveExpense = (expense: ModalFormState) => {
-    console.log(expense);
+
+    const expenseID: ModalFormState = {
+      ...expense,
+      id: crypto.randomUUID()
+    }
+
+    setExpenseState([...expenseState, expenseID])
+   
+    setAnimateModal(false);
+
+    setTimeout(() => {
+      setModal(false);
+    }, 500);
   }
 
   return (
