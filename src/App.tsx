@@ -5,6 +5,7 @@ import { BudgetControl } from './components/BudgetControl';
 import { AddCircle } from './components/Icons';
 import { Modal } from './components/Modal';
 import { ModalFormState } from './interfaces/interfaces';
+import { ExpenseList } from './components/ExpenseList';
 
 function App() {
   
@@ -25,10 +26,11 @@ function App() {
 
     const expenseID: ModalFormState = {
       ...expense,
-      id: crypto.randomUUID()
+      id: crypto.randomUUID(),
+      date: new Date(Date.now())
     }
 
-    setExpenseState([...expenseState, expenseID])
+    setExpenseState([...expenseState, expenseID]);
    
     setAnimateModal(false);
 
@@ -38,7 +40,7 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       <Header>
 
         {
@@ -66,6 +68,13 @@ function App() {
         }
 
       </Header>
+      
+      {
+        isValid && 
+                  <main>
+                    <ExpenseList expenseState={ expenseState } />
+                  </main>
+      }
 
       {/* {
         isValid && 
@@ -83,7 +92,7 @@ function App() {
                   />
       }
       
-    </div>
+    </>
   );
 }
 

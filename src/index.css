@@ -24,6 +24,10 @@ body {
   background-color: var(--grey-light);
 }
 
+main {
+  padding-top: 10rem;
+}
+
 header {
   background-color: var(--blue);
 }
@@ -468,4 +472,62 @@ body .modal {
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+}
+
+.expense-list {
+  margin-top: 5rem;
+}
+.expense-list h2 {
+  color: var(--grey-dark);
+  font-weight: 900;
+}
+
+.expense {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.amount-expense {
+  font-size: 2.4rem;
+  color: var(--black);
+  font-weight: 900;
+}
+
+.content-expense {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.description-expense p {
+  margin: 0 0 0.3rem 0;
+}
+.description-expense .category {
+  color: var(--grey);
+  font-size: 1.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.description-expense p {
+  margin-bottom: 1rem;
+}
+.description-expense .name-expense {
+  color: var(--grey-dark);
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+.description-expense .name-expense:hover {
+  cursor: pointer;
+}
+.description-expense .date-expense {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--grey-dark);
+}
+.description-expense .date-expense span {
+  font-weight: 400;
 }

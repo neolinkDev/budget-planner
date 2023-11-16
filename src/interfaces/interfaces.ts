@@ -31,4 +31,5 @@ export interface ModalFormState {
   name: string
   amount: number
   category: string
+  date?: Date
 }
