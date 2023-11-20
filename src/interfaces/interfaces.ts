@@ -17,6 +17,7 @@ export interface MessageProps {
 
 export interface BudgetControlProps {
   budget: number
+  expenseState: ModalFormState[]
 }
 
 export interface ModalProps {
@@ -32,4 +33,12 @@ export interface ModalFormState {
   amount: number
   category: string
   date?: Date
+}
+
+export interface ExpenseProps {  
+  expense: ModalFormState;
+}
+
+export interface Icons {
+  [key: string]: JSX.Element;
 }

@@ -40,14 +40,14 @@ function App() {
   }
 
   return (
-    <>
+    <div className={ modal ? 'fixed-height-viewport' : '' }>
       <Header>
 
         {
           isValid ? 
           (
             <>
-              <BudgetControl budget={ budget } />
+              <BudgetControl budget={ budget } expenseState={ expenseState } />
               
               <div 
                 className='add-circle shake-horizontal'
@@ -92,7 +92,7 @@ function App() {
                   />
       }
       
-    </>
+    </div>
   );
 }
 

@@ -1,21 +1,38 @@
 
+
 import { formatDate } from '../helpers/dateFormat';
-import { ModalFormState } from '../interfaces/interfaces';
+import { ExpenseProps, Icons } from '../interfaces/interfaces';
+import {
+  EntertainmentIcon,
+  FoodIcon,
+  HealthIcon,
+  HousingIcon,
+  TransportationIcon,
+} from './Icons';
+import {
+  ENTERTAINMENT_CATEGORY,
+  FOOD_CATEGORY,
+  HEALTH_CATEGORY,
+  HOUSING_CATEGORY,
+  TRANSPORTATION_CATEGORY,
+} from '../constants/expensesTypes';
 
-
-interface ExpenseProps {  
-  expense: ModalFormState;
+const iconsObj: Icons = {
+  [FOOD_CATEGORY]: <FoodIcon />,
+  [TRANSPORTATION_CATEGORY]: <TransportationIcon />,
+  [ENTERTAINMENT_CATEGORY]: <EntertainmentIcon />,
+  [HOUSING_CATEGORY]: <HousingIcon />,
+  [HEALTH_CATEGORY]: <HealthIcon />
 }
 
-
 export const Expense = ({ expense }: ExpenseProps) => {
-
-
 
   return (
     <div className='expense shadow'>
 
       <div className="content-expense">
+        
+        {iconsObj[expense.category] || <p>Icono Gasto</p>}
 
         <div className="description-expense">
 
