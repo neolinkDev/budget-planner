@@ -10,9 +10,13 @@ export const BudgetControl = ({ budget, expenseState}: BudgetControlProps) => {
   useEffect(() => {
 
     const totalSpent = expenseState.reduce((acc, expense) => expense.amount + acc, 0);
+    const totalBudget = budget - totalSpent;
+    // console.log(totalBudget)
 
+    setBalance(totalBudget);
     setExpenses(totalSpent);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [expenseState])
   
   return (
