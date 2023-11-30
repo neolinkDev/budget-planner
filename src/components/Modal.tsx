@@ -45,6 +45,7 @@ export const Modal = ({
       // console.log(editExpense);
       setForm(editExpense);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   //
