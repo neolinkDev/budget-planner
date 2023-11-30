@@ -34,11 +34,11 @@ const iconsObj: Icons = {
   [HEALTH_CATEGORY]: <HealthIcon />
 }
 
-export const Expense = ({ expense }: ExpenseProps) => {
+export const Expense = ({ expense, setEditExpense }: ExpenseProps) => {
 
   const leadingActions = () => (
     <LeadingActions>
-      <SwipeAction onClick={() => console.info('Editar...')}>
+      <SwipeAction onClick={() => setEditExpense(expense)}>
         Editar
       </SwipeAction>
     </LeadingActions>
@@ -65,7 +65,9 @@ export const Expense = ({ expense }: ExpenseProps) => {
 
           <div className="content-expense">
             
-            {iconsObj[expense.category] || <p>Icono Gasto</p>}
+            {
+              iconsObj[expense.category] || <p>Icono Gasto</p>
+            }
 
             <div className="description-expense">
 

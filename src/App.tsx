@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Header } from './components/Header';
 import { NewBudget } from './components/NewBudget';
 import { BudgetControl } from './components/BudgetControl';
@@ -13,25 +13,72 @@ function App() {
   const [isValid, setIsValid] = useState<boolean>(false);
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
-  const [expenseState, setExpenseState] = useState<ModalFormState[]>([])
-
+  const [expenseState, setExpenseState] = useState<ModalFormState[]>([]);
+  const [editExpense, setEditExpense] = useState<ModalFormState>({
+    name: '',
+    amount: 0,
+    category: ''
+  });
+  
+  //
+  useEffect(() => {
+    // console.log(Object.keys(editExpense).length)
+    if (
+      editExpense.name !== '' ||
+      editExpense.amount !== 0 ||
+      editExpense.category !== ''
+    ) {
+      setModal(true);
+      setAnimateModal(true);
+    }
+  }, [editExpense])
+  
   //
   const handleNewBudget = (): void => {
     setModal(true);
     setAnimateModal(true);
+    setEditExpense({
+      name: '',
+      amount: 0,
+      category: ''
+    });
   }
 
   // 
   const saveExpense = (expense: ModalFormState) => {
 
-    const expenseID: ModalFormState = {
-      ...expense,
-      id: crypto.randomUUID(),
-      date: new Date(Date.now())
+    
+  
+    // const expenseID: ModalFormState = {
+    //   ...expense,
+    //   id: crypto.randomUUID(),
+    //   date: new Date(Date.now())
+    // }
+
+    // setExpenseState([...expenseState, expenseID]);
+
+    // // console.log(expenseID)
+   
+    // setAnimateModal(false);
+
+    // setTimeout(() => {
+    //   setModal(false);
+    // }, 500);
+
+    if(expense.id){
+      const updateExpense = expenseState.map( expSta => expSta.id === expense.id ? expense : expSta )
+      setExpenseState(updateExpense)
+      // console.log(updateExpense)
+    }else {
+
+      const expenseID: ModalFormState = {
+        ...expense,
+        id: crypto.randomUUID(),
+        date: new Date(Date.now())
+      }
+      setExpenseState([...expenseState, expenseID]);
     }
 
-    setExpenseState([...expenseState, expenseID]);
-   
     setAnimateModal(false);
 
     setTimeout(() => {
@@ -72,7 +119,10 @@ function App() {
       {
         isValid && 
                   <main>
-                    <ExpenseList expenseState={ expenseState } />
+                    <ExpenseList 
+                      expenseState={ expenseState } 
+                      setEditExpense={ setEditExpense }
+                    />
                   </main>
       }
 
@@ -89,6 +139,7 @@ function App() {
                     animateModal={ animateModal } 
                     setAnimateModal={ setAnimateModal}
                     saveExpense={ saveExpense }
+                    editExpense={ editExpense }
                   />
       }
       

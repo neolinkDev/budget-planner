@@ -1,18 +1,18 @@
 
-import { ModalFormState } from '../interfaces/interfaces';
+import { ModalFormState, ExpenseListProps } from '../interfaces/interfaces';
 import { Expense } from './Expense';
 
-interface ExpenseListProps {  
-  expenseState: ModalFormState[];
-}
-
-export const ExpenseList = ({ expenseState }: ExpenseListProps) => {
+export const ExpenseList = ({ expenseState, setEditExpense }: ExpenseListProps) => {
   return (
     <div className="container expense-list">
       <h2>{ expenseState.length ? 'Gastos' : 'Sin Gastos' }</h2>
       {
         expenseState.map( (expense: ModalFormState) => (
-          <Expense key={ expense.id } expense={ expense } />
+          <Expense 
+            key={ expense.id } 
+            expense={ expense } 
+            setEditExpense={setEditExpense}
+          />
         ))
       }
     </div>

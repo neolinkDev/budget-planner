@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import {
   ENTERTAINMENT_CATEGORY,
   FOOD_CATEGORY,
@@ -17,19 +17,36 @@ export const Modal = ({
   setModal,
   animateModal,
   setAnimateModal,
-  saveExpense
+  saveExpense,
+  editExpense
 }: ModalProps) => {
 
+  //
   const [form, setForm] = useState<ModalFormState>({
     name: '',
     amount: 0,
-    category: ''
+    category: '',
+    id: '',
+    date: null
   })
+  const { name, amount, category, id, date } = form;
 
-  const [msg, setMsg] = useState('');
+  //
+  const [msg, setMsg] = useState<string>('');
 
-  const { name, amount, category } = form;
-
+  //
+  useEffect(() => {
+    // console.log(Object.keys(editExpense).length)
+    if (
+      editExpense.name !== '' ||
+      editExpense.amount !== 0 ||
+      editExpense.category !== ''
+    ) {
+      // console.log(editExpense);
+      setForm(editExpense);
+    }
+  }, []);
+  
   //
   const handleHiddenModal = (): void => {
     setAnimateModal(false);
@@ -61,7 +78,7 @@ export const Modal = ({
     })
   }
 
-  //
+  // submit button
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
@@ -75,7 +92,7 @@ export const Modal = ({
       return;
     }
 
-    saveExpense({ name, amount, category })
+    saveExpense({ name, amount, category, id, date })
     
   }
 
@@ -95,7 +112,11 @@ export const Modal = ({
         }`}
         onSubmit={ handleSubmit }
       >
-        <legend>Nuevo Gasto</legend>
+        <legend>
+          {
+            editExpense.name ? 'editar gasto': 'nuevo gasto'
+          }
+        </legend>
 
         {
           msg && <Message MessageType="error" >{ msg }</Message>
@@ -151,7 +172,10 @@ export const Modal = ({
 
         </div>
 
-        <input type="submit" value="Añadir Gasto" />
+        <input 
+          type="submit" 
+          value={editExpense.name ? 'guardar cambios': 'añadir gasto'} 
+        />
       </form>
     </div>
   );

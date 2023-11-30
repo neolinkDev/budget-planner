@@ -25,6 +25,7 @@ export interface ModalProps {
   animateModal: boolean
   setAnimateModal: React.Dispatch<React.SetStateAction<boolean>>,
   saveExpense: (expense: ModalFormState) => void;
+  editExpense: ModalFormState
 }
 
 export interface ModalFormState {
@@ -32,13 +33,19 @@ export interface ModalFormState {
   name: string
   amount: number
   category: string
-  date?: Date
+  date?: Date | null
 }
 
 export interface ExpenseProps {  
   expense: ModalFormState;
+  setEditExpense: React.Dispatch<React.SetStateAction<ModalFormState>>
 }
 
 export interface Icons {
   [key: string]: JSX.Element;
+}
+
+export interface ExpenseListProps {  
+  expenseState: ModalFormState[];
+  setEditExpense: React.Dispatch<React.SetStateAction<ModalFormState>>
 }
