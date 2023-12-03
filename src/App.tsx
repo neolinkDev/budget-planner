@@ -50,7 +50,10 @@ function App() {
     if(expense.id){
       const updateExpense = expenseState.map( expSta => expSta.id === expense.id ? expense : expSta )
       setExpenseState(updateExpense)
-      // console.log(updateExpense)
+      setEditExpense({
+        name: '',
+        amount: 0,
+        category: ''})
     }else {
 
       const expenseID: ModalFormState = {
@@ -129,6 +132,7 @@ function App() {
                     setAnimateModal={ setAnimateModal}
                     saveExpense={ saveExpense }
                     editExpense={ editExpense }
+                    setEditExpense={ setEditExpense }
                   />
       }
       

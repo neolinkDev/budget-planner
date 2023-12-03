@@ -18,7 +18,8 @@ export const Modal = ({
   animateModal,
   setAnimateModal,
   saveExpense,
-  editExpense
+  editExpense,
+  setEditExpense
 }: ModalProps) => {
 
   //
@@ -51,6 +52,10 @@ export const Modal = ({
   //
   const handleHiddenModal = (): void => {
     setAnimateModal(false);
+    setEditExpense({
+      name: '',
+      amount: 0,
+      category: ''})
 
     setTimeout(() => {
       setModal(false);

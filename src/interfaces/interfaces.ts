@@ -26,6 +26,7 @@ export interface ModalProps {
   setAnimateModal: React.Dispatch<React.SetStateAction<boolean>>,
   saveExpense: (expense: ModalFormState) => void;
   editExpense: ModalFormState
+  setEditExpense: React.Dispatch<React.SetStateAction<ModalFormState>>,
 }
 
 export interface ModalFormState {
