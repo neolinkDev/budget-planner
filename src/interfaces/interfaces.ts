@@ -39,6 +39,7 @@ export interface ModalFormState {
 export interface ExpenseProps {  
   expense: ModalFormState;
   setEditExpense: React.Dispatch<React.SetStateAction<ModalFormState>>
+  deleteExpense: (id: string) => void
 }
 
 export interface Icons {
@@ -48,4 +49,5 @@ export interface Icons {
 export interface ExpenseListProps {  
   expenseState: ModalFormState[];
   setEditExpense: React.Dispatch<React.SetStateAction<ModalFormState>>
+  deleteExpense: (id: string) => void
 }

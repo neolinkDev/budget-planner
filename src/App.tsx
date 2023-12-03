@@ -47,24 +47,6 @@ function App() {
   // 
   const saveExpense = (expense: ModalFormState) => {
 
-    
-  
-    // const expenseID: ModalFormState = {
-    //   ...expense,
-    //   id: crypto.randomUUID(),
-    //   date: new Date(Date.now())
-    // }
-
-    // setExpenseState([...expenseState, expenseID]);
-
-    // // console.log(expenseID)
-   
-    // setAnimateModal(false);
-
-    // setTimeout(() => {
-    //   setModal(false);
-    // }, 500);
-
     if(expense.id){
       const updateExpense = expenseState.map( expSta => expSta.id === expense.id ? expense : expSta )
       setExpenseState(updateExpense)
@@ -84,6 +66,12 @@ function App() {
     setTimeout(() => {
       setModal(false);
     }, 500);
+  }
+
+  //
+  const deleteExpense = (id: string) => {
+    const updateExpense = expenseState.filter( expense => expense.id !== id)
+    setExpenseState(updateExpense);
   }
 
   return (
@@ -122,6 +110,7 @@ function App() {
                     <ExpenseList 
                       expenseState={ expenseState } 
                       setEditExpense={ setEditExpense }
+                      deleteExpense={ deleteExpense }
                     />
                   </main>
       }

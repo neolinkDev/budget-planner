@@ -2,7 +2,7 @@
 import { ModalFormState, ExpenseListProps } from '../interfaces/interfaces';
 import { Expense } from './Expense';
 
-export const ExpenseList = ({ expenseState, setEditExpense }: ExpenseListProps) => {
+export const ExpenseList = ({ expenseState, setEditExpense, deleteExpense }: ExpenseListProps) => {
   return (
     <div className="container expense-list">
       <h2>{ expenseState.length ? 'Gastos' : 'Sin Gastos' }</h2>
@@ -12,6 +12,7 @@ export const ExpenseList = ({ expenseState, setEditExpense }: ExpenseListProps) 
             key={ expense.id } 
             expense={ expense } 
             setEditExpense={setEditExpense}
+            deleteExpense={ deleteExpense }
           />
         ))
       }

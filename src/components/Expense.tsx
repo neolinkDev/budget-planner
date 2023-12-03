@@ -34,11 +34,12 @@ const iconsObj: Icons = {
   [HEALTH_CATEGORY]: <HealthIcon />
 }
 
-export const Expense = ({ expense, setEditExpense }: ExpenseProps) => {
+export const Expense = ({ expense, setEditExpense, deleteExpense }: ExpenseProps) => {
 
   const leadingActions = () => (
     <LeadingActions>
-      <SwipeAction onClick={() => setEditExpense(expense)}>
+      <SwipeAction 
+        onClick={() => setEditExpense(expense)}>
         Editar
       </SwipeAction>
     </LeadingActions>
@@ -47,8 +48,14 @@ export const Expense = ({ expense, setEditExpense }: ExpenseProps) => {
   const trailingActions = () => (
     <TrailingActions>
       <SwipeAction
-        // destructive={true}
-        onClick={() => console.info('Eliminar...')}
+        destructive={true}
+        onClick={
+          () => {
+            if (expense.id !== undefined) {
+              deleteExpense(expense.id);
+            }
+          }
+        }
       >
         Eliminar
       </SwipeAction>
