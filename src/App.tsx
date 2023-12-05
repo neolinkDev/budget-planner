@@ -9,11 +9,15 @@ import { ExpenseList } from './components/ExpenseList';
 
 function App() {
   
-  const [budget, setBudget] = useState<number>(0);
+  const [budget, setBudget] = useState<number>(
+    Number(localStorage.getItem('budget')) ?? 0
+  );
   const [isValid, setIsValid] = useState<boolean>(false);
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
-  const [expenseState, setExpenseState] = useState<ModalFormState[]>([]);
+  const [expenseState, setExpenseState] = useState<ModalFormState[]>( 
+    localStorage.getItem('expense') ? JSON.parse(localStorage.getItem('expense')!) : []
+  );
   const [editExpense, setEditExpense] = useState<ModalFormState>({
     name: '',
     amount: 0,
@@ -32,7 +36,25 @@ function App() {
       setAnimateModal(true);
     }
   }, [editExpense])
+
+  //
+  useEffect(() => {
+    localStorage.setItem('budget', budget.toString() ?? 0);
+  }, [budget])
   
+  //
+  useEffect(() => {
+    localStorage.setItem('expense', JSON.stringify(expenseState) ?? []);
+  }, [expenseState])
+  
+  //
+  useEffect(()=>{
+    const budgetLocalStorage = Number(localStorage.getItem('budget')) ?? 0
+
+    if(budgetLocalStorage > 0 ) setIsValid(true);
+  }, [])
+  
+
   //
   const handleNewBudget = (): void => {
     setModal(true);
