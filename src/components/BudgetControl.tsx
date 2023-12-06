@@ -59,7 +59,7 @@ export const BudgetControl = ({ budget, expenseState}: BudgetControlProps) => {
             // pathTransition: 'none',
 
             // Colors
-            pathColor: `rgba(62, 152, 199, ${percentage / 100})`,
+            pathColor: percentage > 100 ? '#dc2626' : `rgba(62, 152, 199, ${percentage / 100})`,
             textColor: '#f88',
             trailColor: '#d6d6d6',
             backgroundColor: '#3e98c7',
@@ -70,7 +70,7 @@ export const BudgetControl = ({ budget, expenseState}: BudgetControlProps) => {
       <div className="content-budget">
 
         <p><span>Presupuesto: </span>{ formatCurrency(budget) }</p>
-        <p><span>Saldo: </span>{ formatCurrency(balance) }</p>
+        <p className={`${ balance < 0 ? 'negativo' : ''}`}><span>Saldo: </span>{ formatCurrency(balance) }</p>
         <p><span>Gastos: </span>{ formatCurrency(expenses) }</p>
 
       </div>

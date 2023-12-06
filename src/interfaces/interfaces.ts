@@ -51,4 +51,6 @@ export interface ExpenseListProps {
   expenseState: ModalFormState[];
   setEditExpense: React.Dispatch<React.SetStateAction<ModalFormState>>
   deleteExpense: (id: string) => void
+  filter: string
+  filterExpense: ModalFormState[]
 }

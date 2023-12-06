@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
+
 import { Header } from './components/Header';
 import { NewBudget } from './components/NewBudget';
 import { BudgetControl } from './components/BudgetControl';
 import { AddCircle } from './components/Icons';
 import { Modal } from './components/Modal';
-import { ModalFormState } from './interfaces/interfaces';
 import { ExpenseList } from './components/ExpenseList';
+
+import { ModalFormState } from './interfaces/interfaces';
+import { Filters } from './components/Filters';
 
 function App() {
   
@@ -23,6 +26,8 @@ function App() {
     amount: 0,
     category: ''
   });
+  const [filter, setFilter] = useState<string>('');
+  const [filterExpense, setFilterExpense] = useState<ModalFormState[]>([]);
   
   //
   useEffect(() => {
@@ -54,7 +59,16 @@ function App() {
     if(budgetLocalStorage > 0 ) setIsValid(true);
   }, [])
   
-
+  // filter changes
+  useEffect(() => {
+    if(filter){
+      const expensesFiltered = expenseState.filter( expense => expense.category === filter )
+      setFilterExpense(expensesFiltered)
+    }
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter])
+  
   //
   const handleNewBudget = (): void => {
     setModal(true);
@@ -132,10 +146,16 @@ function App() {
       {
         isValid && 
                   <main>
+                    <Filters 
+                      filter={ filter }
+                      setFilter={ setFilter }
+                    />
                     <ExpenseList 
                       expenseState={ expenseState } 
                       setEditExpense={ setEditExpense }
                       deleteExpense={ deleteExpense }
+                      filter={ filter }
+                      filterExpense={ filterExpense }
                     />
                   </main>
       }

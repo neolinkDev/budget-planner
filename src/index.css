@@ -33,7 +33,6 @@ main {
   padding-top: 10rem;
 }
 
-
 header {
   background-color: var(--blue);
 }
@@ -70,6 +69,25 @@ header h1 {
   background-color: var(--white);
   padding: 4rem;
   border-radius: 1.2rem;
+}
+
+.filters .field {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.filters label {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--grey-dark);
+}
+.filters select {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+  text-align: center;
+  background-color: var(--grey-light);
 }
 
 .form {
@@ -224,15 +242,7 @@ form input[type='submit'] {
   margin: 0 auto;
 }
 
-.container-budget {
-  margin-top: -5rem;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  transform: translateY(5rem);
-}
 
 .two-columns {
   flex-direction: column;
