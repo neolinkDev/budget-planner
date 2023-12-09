@@ -1,26 +1,23 @@
 import { useEffect, useState } from 'react';
 
-import { Header } from './components/Header';
-import { NewBudget } from './components/NewBudget';
-import { BudgetControl } from './components/BudgetControl';
-import { AddCircle } from './components/Icons';
-import { Modal } from './components/Modal';
-import { ExpenseList } from './components/ExpenseList';
+import { Header, NewBudget, BudgetControl, AddCircle, Modal, ExpenseList, Filters } from './components';
 
 import { ModalFormState } from './interfaces/interfaces';
-import { Filters } from './components/Filters';
 
 function App() {
   
   const [budget, setBudget] = useState<number>(
     Number(localStorage.getItem('budget')) ?? 0
   );
+
   const [isValid, setIsValid] = useState<boolean>(false);
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
+
   const [expenseState, setExpenseState] = useState<ModalFormState[]>( 
     localStorage.getItem('expense') ? JSON.parse(localStorage.getItem('expense')!) : []
   );
+  
   const [editExpense, setEditExpense] = useState<ModalFormState>({
     name: '',
     amount: 0,
@@ -121,7 +118,13 @@ function App() {
           isValid ? 
           (
             <>
-              <BudgetControl budget={ budget } expenseState={ expenseState } />
+              <BudgetControl 
+                budget={ budget } 
+                setBudget={ setBudget }
+                expenseState={ expenseState } 
+                setExpenseState={ setExpenseState }
+                setIsValid={ setIsValid }
+              />
               
               <div 
                 className='add-circle shake-horizontal'
@@ -159,13 +162,6 @@ function App() {
                     />
                   </main>
       }
-
-      {/* {
-        isValid && 
-          <div className='add-circle'>
-            <AddCircle />
-          </div>
-      } */}
 
       {
         modal && <Modal 

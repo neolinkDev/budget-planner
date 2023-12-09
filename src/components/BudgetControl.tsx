@@ -5,12 +5,13 @@ import { formatCurrency } from '../helpers/amountFormat';
 import { BudgetControlProps } from '../interfaces/interfaces';
 
 
-export const BudgetControl = ({ budget, expenseState}: BudgetControlProps) => {
+export const BudgetControl = ({ budget, setBudget, expenseState, setExpenseState, setIsValid }: BudgetControlProps) => {
 
   const [percentage, setPercentage] = useState<number>(0)
   const [balance, setBalance] = useState<number>(0);
   const [expenses, setExpenses] = useState<number>(0);
 
+  //
   useEffect(() => {
 
     const totalSpent = expenseState.reduce((acc, expense) => expense.amount + acc, 0);
@@ -29,6 +30,17 @@ export const BudgetControl = ({ budget, expenseState}: BudgetControlProps) => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [expenseState])
+
+  //
+  function handleReset(){
+    const result = confirm('¿Deseas reiniciar tu presupuesto?');
+    
+    if(result){
+      setExpenseState([]);
+      setBudget(0);
+      setIsValid(false);
+    }
+  }
   
   return (
 
@@ -69,8 +81,17 @@ export const BudgetControl = ({ budget, expenseState}: BudgetControlProps) => {
 
       <div className="content-budget">
 
+        <button 
+          className='reset'
+          onClick={ handleReset }
+        >
+          reiniciar
+        </button>
+
         <p><span>Presupuesto: </span>{ formatCurrency(budget) }</p>
+
         <p className={`${ balance < 0 ? 'negativo' : ''}`}><span>Saldo: </span>{ formatCurrency(balance) }</p>
+
         <p><span>Gastos: </span>{ formatCurrency(expenses) }</p>
 
       </div>

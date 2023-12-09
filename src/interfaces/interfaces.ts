@@ -17,7 +17,10 @@ export interface MessageProps {
 
 export interface BudgetControlProps {
   budget: number
+  setBudget: React.Dispatch<React.SetStateAction<number>>
   expenseState: ModalFormState[]
+  setExpenseState: React.Dispatch<React.SetStateAction<ModalFormState[]>>
+  setIsValid: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export interface ModalProps {
