@@ -63,8 +63,8 @@ function App() {
       setFilterExpense(expensesFiltered)
     }
     
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filter])
+  
+  }, [filter, expenseState])
   
   //
   const handleNewBudget = (): void => {
@@ -124,6 +124,7 @@ function App() {
                 expenseState={ expenseState } 
                 setExpenseState={ setExpenseState }
                 setIsValid={ setIsValid }
+                setFilter={ setFilter }
               />
               
               <div 
@@ -152,6 +153,7 @@ function App() {
                     <Filters 
                       filter={ filter }
                       setFilter={ setFilter }
+                      expenseState={ expenseState }
                     />
                     <ExpenseList 
                       expenseState={ expenseState } 

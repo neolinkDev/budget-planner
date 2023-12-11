@@ -1,4 +1,4 @@
-// import { useEffect, useState } from 'react';
+
 import {
   ENTERTAINMENT_CATEGORY,
   FOOD_CATEGORY,
@@ -6,13 +6,18 @@ import {
   HOUSING_CATEGORY,
   TRANSPORTATION_CATEGORY,
 } from '../constants/expensesTypes';
+import { ModalFormState } from '../interfaces/interfaces';
 
 interface FiltersProps {
   filter: string
   setFilter: React.Dispatch<React.SetStateAction<string>>
+  expenseState: ModalFormState[]
 }
 
-export const Filters = ({ filter, setFilter}: FiltersProps ) => {
+export const Filters = ({ filter, setFilter, expenseState }: FiltersProps ) => {
+
+  const isDisabled = expenseState.length === 0;
+
   return (
     <div className="filters shadow container">
 
@@ -25,6 +30,7 @@ export const Filters = ({ filter, setFilter}: FiltersProps ) => {
           <select
             value={ filter }
             onChange={ e => setFilter(e.target.value) }
+            disabled={ isDisabled }
           >
             <option value="">-- Seleccionar --</option>
             <option value={FOOD_CATEGORY}>Comida</option>

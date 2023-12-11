@@ -21,6 +21,7 @@ export interface BudgetControlProps {
   expenseState: ModalFormState[]
   setExpenseState: React.Dispatch<React.SetStateAction<ModalFormState[]>>
   setIsValid: React.Dispatch<React.SetStateAction<boolean>>
+  setFilter: React.Dispatch<React.SetStateAction<string>>
 }
 
 export interface ModalProps {

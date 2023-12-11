@@ -8,6 +8,7 @@ export const ExpenseList = ({
   filter,
   filterExpense,
 }: ExpenseListProps) => {
+  
   return (
     <div className="container expense-list">
       {

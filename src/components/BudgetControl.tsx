@@ -5,7 +5,7 @@ import { formatCurrency } from '../helpers/amountFormat';
 import { BudgetControlProps } from '../interfaces/interfaces';
 
 
-export const BudgetControl = ({ budget, setBudget, expenseState, setExpenseState, setIsValid }: BudgetControlProps) => {
+export const BudgetControl = ({ budget, setBudget, expenseState, setExpenseState, setIsValid, setFilter }: BudgetControlProps) => {
 
   const [percentage, setPercentage] = useState<number>(0)
   const [balance, setBalance] = useState<number>(0);
@@ -39,6 +39,7 @@ export const BudgetControl = ({ budget, setBudget, expenseState, setExpenseState
       setExpenseState([]);
       setBudget(0);
       setIsValid(false);
+      setFilter('');
     }
   }
   
